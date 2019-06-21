@@ -1,0 +1,310 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[ugly]{nicefrac}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\limn}{\lim_{n \rightarrow \infty}}
+\newcommand{\tg}{\textrm{tg}}
+
+\newenvironment{definition}[2][Definicja]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{theorem}[2][Twierdzenie]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+
+\section*{CIĄGŁOŚĆ}
+
+\theorem{}
+Niech $A \subset \R, f : A \rightarrow \R$. Następujące warunki są równoważne:
+\begin{itemize}
+    \item funkcja $f$ jest jednostajnie ciągła na $A$
+    \item $\forall (x_n),(y_n) \subset A . \lim x_n - y_n = 0 \Rightarrow \lim f(x_n) - f(y_n) = 0$
+\end{itemize}
+
+
+\definition{(warunek Lipschitza)}
+Mówimy, że funkcja $f : A \rightarrow \R$ spełnia warunek Lipschitza (ze stałą $L$) wtedy i tylko wtedy, gdy dla wszystkich $x, y \in A$ zachodzi nierówność $|f(x) - f(y)| \leq L|x - y|$
+
+\theorem{}
+Jeśli $f : A \rightarrow \R$ spełnia na $A$ warunek Lipschitza, to $f$ jest jednostajnie ciągła.
+
+\theorem{(Cantora o jednostajnej ciągłości, wersja I)}
+Każda funkcja ciągła $f : [a, b] \rightarrow \R$ jest jednostajnie ciągła na przedziale $[a, b]$.
+
+\definition{(zbiór zwarty)}
+Powiemy, że zbiór $K \subset \R$ jest zwarty, jeśli z każdego
+ciągu $(x_n) \subset K$ można wybrać taki podciąg zbieżny $(x_{n_k})$, że $x = \lim x_{n_k} \in K$.
+
+\theorem{} . Jeśli $K \subset \R$ jest zbiorem zwartym, a $(x_n) \subset K$ jest ciągiem zbieżnym, to $x = \lim x_n \in K$.
+
+\theorem{(Weierstrassa o przyjmowaniu kresów, wersja ogólna)}
+Jeśli $f : K \rightarrow \R$ jest ciągła, a $K \subset \R$ jest zwarty i niepusty, to istnieją punkty $x_0, x'_0 \in K$ takie, że
+$f(x_0) = \sup f, f(x'_0) = \inf f$.
+
+\theorem{(Cantora o jednostajnej ciągłości, wersja ogólna)}
+Jeśli $K \subset \R$ jest zbiorem zwartym, to każda funkcja ciągła $f : K \rightarrow \R$ jest jednostajnie ciągła na $K$.
+
+
+\theorem{(kryterium wypukłości funkcji ciągłych)}
+Jeśli $P \subset \R$ jest przedziałem i funkcja ciągła $f : P \rightarrow \R$ spełnia warunek
+$f(\frac{x + y}{2}) \leq \frac{f(x) + f(y)}{2}$ dla wszystkich $x, y \in P$
+to $f$ jest wypukła. Ponadto, jeśli nierówność jest ostra dla wszystkich $x \neq y \in P$, to $f$
+jest ściśle wypukła.
+
+\theorem{(nierówność Jensena)}
+Załóżmy, że $P$ jest zbiorem wypukłym i $f : P \rightarrow \R$ jest wypukła.
+Jeśli $n \in \N, x_1, \ldots , x_n \in P$, a $t_1, \ldots , t_n \in [0, 1]$ i
+$\sum t_i = 1$, to wówczas $f(\sum t_ix_i) \leq \sum t_if(x_i)$.
+
+\theorem{}
+Niech $P \subset \R$ będzie przedziałem otwartym. Wtedy każda funkcja
+wypukła $f : P \rightarrow \R$ jest ciągła.
+
+\section*{POCHODNE}
+
+$$\arcsin'(x) = \frac{1}{\sqrt{1 - x^2}},\arccos'(x) = \frac{-1}{\sqrt{1 - x^2}}$$ \\
+$$\sinh(x) = \frac{e^x - e^{-x}}{2}, \cosh(x) = \frac{e^x + e^{-x}}{2}$$
+
+\theorem{}
+Załóżmy, że $c < d$, zaś funkcja $f : [c, d] \rightarrow \R$ jest ciągła na $[c, d]$ i różniczkowalna w każdym punkcie $x \in (c, d)$. Następujące warunki są równoważne:
+\begin{itemize}
+    \item Funkcja $f$ spełnia warunek Lipschitza ze stałą $M$
+    \item Dla każdego $x \in (c, d)$ zachodzi nierówność $|f'(x)| \leq M$
+\end{itemize}
+
+\theorem{(własność Darboux dla pochodnej)}
+Załóżmy, że $a < b$, zaś funkcja
+$f : [a, b] \rightarrow \R$ jest ciągła i różniczkowalna na $[a, b]$. Dla każdej liczby $c \in [f'(a), f'(b)]$ istnieje
+punkt $x \in [a, b]$ taki, że $f'(x) = c$.
+
+\theorem{(wzór Taylora z resztą Lagrange’a)}
+Załóżmy, że funkcja $f : (a, b) \rightarrow \R$
+ma w przedziale $(a, b)$ pochodne do rzędu $(k+1)$ włącznie. Wówczas, dla każdego $x_0 \in (a, b)$
+i każdego $x \in (a, b)$ istnieje taki punkt $c$, pośredni między $x_0$ i $x$, że
+$$f(x) = \sum_{j=0}^k \frac{f^{(j)}(x_0)}{j!} (x - x_0)^j + \frac{f^{(k+1)}(c)}{(k + 1)!} (x - x_0)^{k+1}$$.
+
+\section*{CIĄGI I SZEREGI FUNKCYJNE}
+
+\theorem{}
+Niech $f_n : X \rightarrow \R$ dla $n \in \N$. Następujące warunki są równoważne:
+\begin{itemize}
+    \item Ciąg $(f_n)$ jest zbieżny jednostajnie na $X$ do pewnej funkcji $f : X \rightarrow \R$
+    \item Ciąg $(f_n)$ spełnia jednostajny warunek Cauchy’ego: dla każdego $\varepsilon > 0$ istnieje $n_0 \in \N$ takie, że dla wszystkich $m, n > n_0$ i wszystkich $x \in X$ zachodzi nierówność $|f_n(x) - f_m(x)| < \varepsilon$.
+\end{itemize}
+
+\theorem{(kryterium Weierstrassa)}
+Niech  $f_n : X \rightarrow \R$ dla $n \in \N$.
+Jeśli $|f_n(x)| \leq a_n$ dla $n \in N$,
+a szereg liczbowy $\sum_{n=1}^\infty a_n$ jest zbieżny, to wówczas szeregi funkcyjne
+$\sum_{n=1}^\infty f_n(x)$ oraz $\sum_{n=1}^\infty |f_n(x)|$ są zbieżne.
+
+\theorem{(Weierstrass)}
+Jeśli $a, b \in \R$ i $f \in C([a, b])$, to istnieje ciąg wielomianów $P_n$ o współczynnikach rzeczywistych taki, że $P_n \rightrightarrows f$ na $[a, b]$.
+
+\theorem{ (S. N. Bernstein)}
+Niech $f \in C([0, 1])$. Połóżmy
+$$B_n(f)(x) = \sum_{k=1}^n f\left(\frac{k}{n}\right) \binom{n}{k} x^k (1 - x)^{n-k}
+, x \in [0, 1], n \in \N$$
+Wówczas $B_n(f) \rightrightarrows f$ na $[0, 1]$.
+
+\theorem{(pierwsze twierdzenie Diniego)}
+Załóżmy, że funkcje $f, f_n : K \rightarrow \R$, gdzie $n \in \N$ i $K \subset \R$ jest zbiorem zwartym, są ciągłe. Jeśli $f_n \rightarrow f$ punktowo na $K$, a ponadto $f_1 \leq f_2 \leq f_3 \leq \ldots \leq f_n \leq \ldots$ na $K$,
+to wówczas $f_n \rightrightarrows f$ na $K$.
+
+\theorem{(drugie twierdzenie Diniego)}
+Jeśli funkcje $f_n : [a, b] \rightarrow \R$ są niemalejące i ciąg $(f_n)$ jest punktowo zbieżny na $[a, b]$ do funkcji ciągłej $f$, to wówczas $f_n \rightrightarrows f$.
+
+\theorem{}
+Załóżmy, że $f_n : \R \supset [a, b] \rightarrow \R$, gdzie $n = 1, 2, \ldots$, są różniczkowalne.
+Jeśli ciąg $f'_n \rightrightarrows g$ na $[a, b]$, a ponadto istnieje taki punkt $x_0 \in [a, b]$, że ciąg $f_n(x_0)$ jest zbieżny, to wówczas:
+\begin{itemize}
+    \item Ciąg $f_n$ jest zbieżny jednostajnie do pewnej funkcji ciągłej $f : [a, b] \rightarrow \R$
+    \item Funkcja $f$ jest różniczkowalna na $[a, b]$ i $f' = g$
+\end{itemize}
+
+\theorem{}
+Załóżmy, że $f_n : \R \supset [a, b] \rightarrow \R$, gdzie $n = 1, 2, \ldots$, są różniczkowalne. Jeśli szereg funkcyjny $\sum_{n=0}^\infty f'_n$ jest zbieżny jednostajnie na $[a, b]$ do funkcji $g$, a ponadto istnieje taki punkt $x_0 \in [a, b]$, że szereg liczbowy $\sum_{n=1}^\infty f_n(x_0)$ jest zbieżny, to wówczas:
+\begin{itemize}
+    \item Szereg $\sum_{n=1}^\infty f_n$ jest zbieżny jednostajnie do pewnej funkcji ciągłej $f : [a, b] \rightarrow \R$
+    \item Funkcja $f$ jest różniczkowalna na $[a, b]$ i $f' = g$.
+\end{itemize}
+
+\section*{SZEREGI POTĘGOWE}
+
+\theorem{}
+Załóżmy, że szereg $S(\xi)$ jest zbieżny w pewnym punkcie $\xi \in \C  \{0\}$.
+Jeśli $0 < \rho < |\xi|$, to w kole domkniętym $D_{\rho} = \{z \in \C: |z| \leq \rho\}$ szereg $S(z)$ jest zbieżny jednostajnie i bezwzględnie.
+
+\theorem{}
+Załóżmy, że szereg $S(\xi)$ jest rozbieżny w pewnym punkcie $\xi \in \C \{0\}$.
+Jeśli $|z| > |\xi|$, to szereg S(z) jest rozbieżny.
+
+\theorem{(wzór Cauchy’ego-Hadamarda)}
+Niech $(a_n)$ będzie dowolnym ciągiem liczb zespolonych i niech
+$$\frac{1}{R} = \lim \sup \sqrt[n]{|a_n|}$$
+Wtedy szereg potęgowy $S(z)$ jest, dla każdego $\rho < R$, zbieżny bezwględnie i jednostajnie w
+kole $D_{\rho} = \{z \in \C: |z| \leq \rho\}$, oraz rozbieżny w punktach zbioru $\{z \in \C: |z| > R\}$.
+
+\definition{}
+Koło $\{z \in \C: |z| < R\}$, gdzie liczba $R$ jest dana wzorem Cauchy’ego-Hadamarda, nazywamy kołem zbieżności szeregu potęgowego.
+
+\theorem{}
+Suma $S(z)$ szeregu potęgowego jest funkcją ciągłą wewnątrz koła $\{z \in \C: |z| < R\}$, gdzie liczba $R$ jest dana wzorem Cauchy’ego-Hadamarda. (Jeśli $\frac{1}{R} = 0$, to $S(z)$ jest funkcją
+ciągłą na całej płaszczyźnie $\C$.)
+
+\theorem{}
+Załóżmy, że $R > 0$ jest promieniem zbieżności szeregu potęgowego
+$S(z) = \sum_{n=0}^\infty a_nz^n$.
+Wtedy funkcja $S$ ma pochodną w każdym punkcie $z \in \{w \in \C: |w| < R\}$ i zachodzi wzór
+$S'(z) = \sum_{n=1}^\infty n a_n z^{n-1}$.
+
+\theorem{}
+Załóżmy, że $R > 0$ jest promieniem zbieżności szeregu potęgowego
+$S(z) = \sum_{n=0}^\infty a_nz^n$.
+Funkcja $S$ ma w kole $z \in \{w \in \C: |w| < R\}$ ciągłe pochodne wszystkich rzędów. Zachodzi wzór
+$S^{(k)} (z) = \sum_{n=k}^\infty n (n - 1) \ldots (n - k + 1) a_n z^{n-k}$.
+Dla każdego $k \in \N \cup \{0\}$ jest $k! a_k = S^{(k)}(0)$.
+
+\theorem{(jednoznaczność rozwinięcia w szereg potęgowy)}
+Załóżmy, że sumy dwóch szeregów potęgowych,
+$S(z) = \sum_{n=0}^\infty a_n z^n$
+oraz $T(z) = \sum_{n=0}^\infty b_n z^n$,
+są równe w pewnym kole $|z| < \rho$. Wtedy $a_n = b_n = \frac{S^{(n)}(0)}{n!}$ dla wszystkich $n = 0, 1, 2, \ldots$.
+
+\theorem{(ciągłość szeregu potęgowego w końcu przedziału zbieżności)}
+Załóżmy, że szereg potęgowy
+$g(x) = \sum_{n=0}^\infty a_n x^n$
+o współczynnikach rzeczywistych ma promień zbieżności równy $R$.
+Jeśli suma $g(R) = \sum_{n=0}^\infty a_n R^n$
+jest skończona, to funkcja $g$ jest ciągła na $(-R, R]$.
+
+\section*{CAŁKA}
+
+\theorem{(monotoniczność całki)}
+Jeśli $f, g : [a, b] \rightarrow \R$ są ciągłe i $f \geq g$ na $[a, b]$, to
+$\int_a^b f(x) dx \geq \int_a^b g(x) dx$.
+Jeśli dodatkowo $f > g$ na $(a, b)$, to
+$\int_a^b f(x) dx > \int_a^b g(x) dx$
+
+\theorem{(wartość średnia dla całki)}
+Niech $f : [a, b] \rightarrow \R$ będzie ciągła. Wówczas dla pewnego punktu $\xi \in (a, b)$, jest
+$f(\xi) = \frac{1}{b - a} \int_a^b f(x) dx$.
+
+\theorem{(o przejściu granicznym pod znakiem całki)}
+Załóżmy, że funkcje $f_n : [a, b] \rightarrow \R$ są ciągłe i $f_n \rightrightarrows f$ na przedziale $[a, b]$. Wtedy $\limn \int_a^b f_n(x) dx = \int_a^b f(x) dx$.
+
+\theorem{(wzór Taylora z resztą całkową)}
+Niech $g \in C^{k+1}([a, b]), a < x < b$. Wówczas
+$$g(x) = g(a) + \sum_{j=1}^k \frac{g^{(j)}(a)}{j!} (x-a)^j + \int_a^x \frac{(x- t)^k}{k!} g^{(k + 1)}(t) dt .$$
+
+\definition{(sumy całkowe Riemanna)}
+Niech $f : [a, b] \rightarrow \R$ będzie funkcją ograniczoną, a $P = (x_0, x_1, \ldots, x_n)$ - ustalonym podziałem $[a, b]$. Sumy
+$$G(P, f) = \sum_{i=1}^n \Delta x_i \sup_{[x_{i-1},x_i]} f
+D(P, f) = \sum_{i=1}^n \Delta x_i \inf_{[x_{i-1},x_i]} f $$
+nazywamy odpowiednio górną i dolną sumą Riemanna funkcji $f$ dla podziału $P$.
+
+\definition{(górna i dolna całka Riemanna)}
+Niech $f : [a, b] \rightarrow \R$ będzie funkcją ograniczoną. Liczby
+$\inf G(P, f), \sup D(P, f)$
+nazywamy odpowiednio górną i dolną całką Riemanna funkcji $f$ na odcinku $[a, b]$.
+
+\definition{(funkcje całkowalne w sensie Riemanna)}
+Jeśli $f : [a, b] \rightarrow \R$ jest ograniczona i
+$\inf G(P, f) = \sup D(P, f)$
+to mówimy, że f jest całkowalna w sensie Riemanna. Kładziemy wówczas
+$\int_a^b f(x) dx = \inf G(P, f), \sup D(P, f)$.
+
+\theorem{}
+Każda funkcja $f \in C([a, b])$ jest całkowalna w sensie Riemanna. Jej
+całka Riemanna i całka Newtona są równe.
+
+\theorem{}
+Jeśli $f$ jest monotoniczna na $[a, b]$, to $f$ jest R-całkowalna na $[a, b]$.
+
+\definition{}
+Powiemy, że $Z \subset \R$ jest zbiorem miary Lebesgue’a zero, lub krótko: zbiorem miary zero, wtedy i tylko wtedy, gdy ma ma następującą własność: dla każdego $\varepsilon > 0$
+istnieje przeliczalna rodzina $\{I_j : j = 1, 2, \ldots \}$ przedziałów otwartych taka, że
+$Z \subset \bigcup I_j, \sum
+|I_j| < \varepsilon$,
+gdzie $|I_j|$ oznacza długość przedziału $I_j$.
+Każdy podzbiór zbioru miary zero też jest zbiorem miary zero.
+
+\theorem{}
+Załóżmy, że $f : [a, b] \rightarrow \R$ jest funkcją ograniczoną. Następujące warunki są wówczas równoważne:
+\begin{itemize}
+    \item $f$ jest R-całkowalna na $[a, b]$
+    \item Zbiór $N(f)$ wszystkich punktów nieciągłości funkcji $f$ jest zbiorem miary zero.
+\end{itemize}
+
+\theorem{(Długość wykresu)}
+Jeśli $f : [a, b] \rightarrow \R$ jest funkcją klasy $C^1$, to długość wykresu tej funkcji jest
+równa całce
+$$ \int_a^b \sqrt{1 + f'(x)^2} dx.$$
+
+\theorem{(Objętość bryły)}
+Jeśli $f : [a, b] \rightarrow \R$ jest funkcją klasy $C^1$, to objętość bryły ograniczonej przez obrót $f$ wokół osi x-ów równa się całce
+$$ \pi \int_a^b f(x)^2 dx.$$
+
+\theorem{(Pole powierzchni bocznej)}
+Jeśli $f : [a, b] \rightarrow \R$ jest funkcją klasy $C^1$, to pole powierzchni obrotowej powstałej przez obrót $f$ wokół osi x-ów równa się całce
+$$ 2\pi \int_a^b f(x) \sqrt{1 + f'(x)^2} dx.$$
+
+\definition{(całkowalność bezwzględna i całkowalność warunkowa)}
+Niech $f : [a, \infty) \rightarrow \R$. Mówimy, że całka
+$\int_a^\infty f(x) dx$ jest zbieżna bezwzględnie, a funkcja $f$ jest
+bezwzględnie całkowalna na $[a, \infty)$, wtedy i tylko wtedy, gdy zbieżna jest całka
+$\int_a^\infty |f(y)| dy$.
+Jeśli całka 
+$\int_a^\infty f(x) dx$ jest zbieżna, ale nie jest zbieżna bezwzględnie, to mówimy, że jest
+zbieżna warunkowo. Mówimy wtedy, że $f$ jest warunkowo całkowalna na $[a, \infty)$.
+
+\theorem{}
+Jeśli $f : [a, \infty) \rightarrow \R$ jest bezwzględnie całkowalna na $[a, \infty)$, to całka
+$\int_a^\infty f(x) dx$ jest zbieżna.
+
+\theorem{}
+Niech $f : [a, \infty) \rightarrow [a, \infty)$, gdzie $a \geq 0$, będzie funkcją nierosnącą.
+Następujące warunki są równoważne:
+\begin{itemize}
+    \item Całka niewłaściwa $\int_a^\infty f(x) dx$ jest zbieżna.
+    \item Szereg $S = \sum_{n=a}^\infty f(n)$ jest zbieżny.
+\end{itemize}
+
+\theorem{(kryterium porównawcze dla całek niewłaściwych)}
+Jeśli $f, g$ są nieujemne i ciągłe na przedziale $[a, \infty)$ i istnieją $a_1 \geq a$ i $C > 0$ takie, że $Cf(x) \geq g(x)$ dla wszystkich $x > a_1$, to ze zbieżności całki 
+$\int_a^\infty f(x) dx$ wynika zbieżność całki $\int_a^\infty g(x) dx$,
+natomiast z rozbieżności całki
+$\int_a^\infty g(x) dx$ wynika rozbieżność całki $\int_a^\infty f(x) dx$.
+
+\definition{(Funkcja Gamma Eulera)}
+Dla $a > 0$ kładziemy
+$$\Gamma(a) = \int_0^\infty t^{a-1} e^{-t} dt$$
+
+\theorem{}
+Funkcja $\Gamma$ ma następujące własności:
+$\Gamma(1) = 1$, $\Gamma(a + 1) = a\Gamma(a)$ dla wszystkich $a > 0$, $\Gamma(n) = (n - 1)!$ dla każdego $n \in \N$. $\Gamma(1/2) = \sqrt{\pi}$.
+
+\definition{(Funkcja beta Eulera)}
+Dla $a, b > 0$ kładziemy
+$$B(a, b) = \int_0^1 t^{a-1} (1 - t)^{b-1} dt.$$
+
+\theorem{}
+Zachodzą następujące wzory:
+\begin{itemize}
+    \item $B(a + 1, b) + B(a, b + 1) = B(a, b)$ dla $a, b > 0$,
+    \item $B(a, b + 1) = \frac{b}{a + b} B(a, b)$ dla $a, b > 0$,
+    \item $B(a, b) = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a + b)}$ dla $a, b > 0$.
+\end{itemize}
+
+\end{document}
